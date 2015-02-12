@@ -18,8 +18,16 @@ bool Engine::Init()
 	window->setFramerateLimit(60);
 
     sf::Texture bg_texture;
-    sf::Sprite bg;
+    if(!bg_texture.loadFromFile("desert.png"))
+	{
+		return false;
+	}
 
+    sf::Sprite bg;
+    bg.setTexture(bg_texture);
+    bg.setPosition(sf::Vector2f(0, 0));
+
+    sf::Clock frameClock;
 
 	if(!window)
 		return false;
@@ -28,7 +36,8 @@ bool Engine::Init()
 
 void Engine::RenderFrame()
 {
-	window->clear(sf::Color::Green);
+	//window->clear(sf::Color::Blue);
+	window->draw(bg);
 	window->display();
 }
 
@@ -46,7 +55,8 @@ void Engine::ProcessInput()
 
 void Engine::Update()
 {
-
+	sf::Time frameTime;
+	frameTime = frameClock.restart();
 }
 
 void Engine::MainLoop()

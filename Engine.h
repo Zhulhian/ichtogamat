@@ -8,6 +8,9 @@ class Engine
 private:
 	// SFML RenderWindow thingy
 	sf::RenderWindow* window;
+	sf::Texture bg_texture;
+	sf::Sprite bg;
+	sf::Clock frameClock;
 
 	// Initialize the engine
 	bool Init();
